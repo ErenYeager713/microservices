@@ -25,7 +25,7 @@ echo "Installing gRPC..."
 go get google.golang.org/grpc
 
 echo "Installing docker..."
-sudo apt-get upgrade
+sudo apt-get update
 sudo apt-get install -y docker.io
 
 echo "Docker version..."
