@@ -51,4 +51,5 @@ sudo docker run -it --rm --name mongodb_container -e MONGO_INITDB_ROOT_USERNAME=
 echo "Installing go mgo.v2 pkg..."
 go get gopkg.in/mgo.v2
 
-echo "Setup finished.\nHappy Coding!"
+echo "Setup finished."
+echo "Happy Coding!"
