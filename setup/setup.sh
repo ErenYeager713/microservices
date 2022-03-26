@@ -46,10 +46,13 @@ kubectl version --client
 echo "Setting up Docker..."
 sudo docker ps -a
 sudo docker images -a
-sudo docker run -it --rm --name mongodb_container -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -v mongodata:/data/db -d -p 27017:27017 mongo
+sudo docker run -it --rm --name mongodb_container -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -v mongodata:/data/db -d -p 27017:27017 mongo=4.4.3
 
-echo "Installing go mgo.v2 pkg..."
+echo "Installing mgo.v2 pkg..."
 go get gopkg.in/mgo.v2
+
+echo "Installing godotenv pkg..."
+go get github.com/joho/godotenv
 
 echo "Setup finished."
 echo "Happy Coding!"
