@@ -5,9 +5,8 @@ sudo wget https://golang.org/dl/go1.17.8.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.17.8.linux-amd64.tar.gz
 
 export PATH=$PATH:/usr/local/go/bin
-export GO111MODULE=on
-
 source ~/.bashrc
+export GO111MODULE=on
 
 echo "Checking go version..."
 go version
