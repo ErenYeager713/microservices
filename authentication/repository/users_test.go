@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"microservices/authentication/models"
-	"microservices/authentication/repository"
+
 	"microservices/db"
 	"testing"
 	"time"
@@ -15,8 +15,6 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-type usersRepository = repository.UsersStructRepository
-
 func init() {
 	err := godotenv.Load("../../.env")
 	if err != nil {
@@ -25,7 +23,7 @@ func init() {
 	cfg := db.NewConfig()
 	conn, err := db.NewConnection(cfg)
 	defer conn.Close()
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.(*usersRepository).DeleteAll()
 	if err != nil {
 		log.Panicln(err)
@@ -49,7 +47,7 @@ func TestUsersRepositorySave(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
@@ -75,7 +73,7 @@ func TestUsersRepositoryGetById(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
@@ -110,7 +108,7 @@ func TestUsersRepositoryGetByEmail(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
@@ -145,7 +143,7 @@ func TestUsersRepositoryUpdate(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
@@ -179,7 +177,7 @@ func TestUsersRepositoryDelete(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
@@ -213,7 +211,7 @@ func TestUsersRepositoryGetAll(t *testing.T) {
 		Updated:  time.Now(),
 	}
 
-	r := repository.NewUsersRepository(conn)
+	r := NewUsersRepository(conn)
 	err = r.Save(user)
 	assert.NoError(t, err)
 
